@@ -1,4 +1,4 @@
-const { merge } = require('webpack-merge');
+const {merge} = require('webpack-merge');
 const common = require('./webpack.base.cjs').config;
 const path = require('path');
 
@@ -16,7 +16,6 @@ const config = merge(common, {
         static: {
             directory: path.join(__dirname, '../'),
         },
-        open: ['samples/index.html'],
         hot: true,
         compress: true,
         port: 3000

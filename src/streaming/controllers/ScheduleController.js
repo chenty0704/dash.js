@@ -164,8 +164,8 @@ function ScheduleController(config) {
                 logger.debug('Quality has changed, get init request for representationid = ' + currentRepresentation.id);
             }
             eventBus.trigger(Events.INIT_FRAGMENT_NEEDED,
-                { representationId: currentRepresentation.id, sender: instance },
-                { streamId: streamInfo.id, mediaType: type }
+                {representationId: currentRepresentation.id, sender: instance},
+                {streamId: streamInfo.id, mediaType: type}
             );
             checkPlaybackQuality = false;
             initSegmentRequired = false;
@@ -176,7 +176,7 @@ function ScheduleController(config) {
             logger.debug(`Media segment needed for ${type} and stream id ${streamInfo.id}`);
             eventBus.trigger(Events.MEDIA_FRAGMENT_NEEDED,
                 {},
-                { streamId: streamInfo.id, mediaType: type }
+                {streamId: streamInfo.id, mediaType: type}
             );
             checkPlaybackQuality = true;
         }
@@ -375,7 +375,7 @@ function ScheduleController(config) {
     }
 
     function _onPlaybackRateChanged(e) {
-        dashMetrics.updatePlayListTraceMetrics({ playbackspeed: e.playbackRate.toString() });
+        dashMetrics.updatePlayListTraceMetrics({playbackspeed: e.playbackRate.toString()});
     }
 
     function setTimeToLoadDelay(value) {

@@ -1,4 +1,4 @@
-import { CommonMediaRequest, CommonMediaResponse, RequestInterceptor, ResponseInterceptor } from '@svta/common-media-library/request'
+import {RequestInterceptor, ResponseInterceptor} from '@svta/common-media-library/request'
 
 export = dashjs;
 export as namespace dashjs;
@@ -1915,12 +1915,12 @@ declare namespace dashjs {
     }
 
     export class KeyMessage {
-        constructor(sessionToken: SessionToken, message: ArrayBuffer, defaultURL: string, messageType?: string);
-
         sessionToken: SessionToken;
         message: ArrayBuffer;
         defaultURL: string;
         messageType: string;
+
+        constructor(sessionToken: SessionToken, message: ArrayBuffer, defaultURL: string, messageType?: string);
     }
 
     export interface KeyMessageEvent extends Event {
@@ -3366,34 +3366,30 @@ declare namespace dashjs {
     }
 
     export class KeyPair {
-        constructor(keyId: string, key: string)
-
         keyId: string;
         key: string;
+
+        constructor(keyId: string, key: string)
     }
 
     export class KeySystemAccess {
-        constructor(keySystem: KeySystem, ksConfiguration: KeySystemConfiguration)
-
         keySystem: KeySystem;
         ksConfiguration: KeySystemConfiguration;
+
+        constructor(keySystem: KeySystem, ksConfiguration: KeySystemConfiguration)
     }
 
     export class KeySystemConfiguration {
-        constructor(audioCapabilities: MediaCapability[], videoCapabilities: MediaCapability[], distinctiveIdentifier: string, persistentState: string, sessionTypes: string[])
-
         audioCapabilities: MediaCapability[];
         videoCapabilities: MediaCapability[];
         distinctiveIdentifier: string;
         persistentState: string;
         sessionTypes: string[];
+
+        constructor(audioCapabilities: MediaCapability[], videoCapabilities: MediaCapability[], distinctiveIdentifier: string, persistentState: string, sessionTypes: string[])
     }
 
     export class LicenseRequest {
-        constructor(url: string, method: string, responseType: string, headers: {
-            [key: string]: string
-        }, withCredentials: boolean, messageType: string, sessionId: string, data: ArrayBuffer)
-
         url: string;
         method: string;
         responseType: string;
@@ -3402,36 +3398,40 @@ declare namespace dashjs {
         messageType: string;
         sessionId: string;
         data: ArrayBuffer;
+
+        constructor(url: string, method: string, responseType: string, headers: {
+            [key: string]: string
+        }, withCredentials: boolean, messageType: string, sessionId: string, data: ArrayBuffer)
     }
 
     export class LicenseRequestComplete {
-        constructor(message: Uint8Array, sessionToken: SessionToken, messageType: string)
-
         message: Uint8Array;
         sessionToken: SessionToken;
         messageType: string;
+
+        constructor(message: Uint8Array, sessionToken: SessionToken, messageType: string)
     }
 
     export class LicenseResponse {
-        constructor(url: string, headers: object, data: ArrayBuffer)
-
         url: string;
         headers: object;
         data: ArrayBuffer;
+
+        constructor(url: string, headers: object, data: ArrayBuffer)
     }
 
     export class MediaCapability {
-        constructor(contentType: string, robustness: string)
-
         contentType: string;
         robustness: string;
+
+        constructor(contentType: string, robustness: string)
     }
 
     export class NeedKey {
-        constructor(initData: ArrayBuffer, initDataType: string)
-
         initData: ArrayBuffer;
         initDataType: string;
+
+        constructor(initData: ArrayBuffer, initDataType: string)
     }
 
     export interface ProtectionDataSet {
@@ -4274,8 +4274,6 @@ declare namespace dashjs {
     }
 
     export class FragmentRequest {
-        constructor(url: string);
-
         action: string;
         availabilityEndTime: number;
         availabilityStartTime: number;
@@ -4299,12 +4297,14 @@ declare namespace dashjs {
         type: 'InitializationSegment' | 'MediaSegment' | null;
         url: string | null;
         wallStartTime: number | null;
+
+        constructor(url: string);
     }
 
     export class HeadRequest extends FragmentRequest {
-        constructor(url: string);
-
         checkforExistenceOnly: boolean;
+
+        constructor(url: string);
     }
 
     export class IsoBox {
@@ -4312,11 +4312,11 @@ declare namespace dashjs {
     }
 
     export class IsoBoxSearchInfo {
-        constructor(lastCompletedOffset: number, found: boolean, size: number);
-
         lastCompletedOffset: number;
         found: boolean;
         size: number;
+
+        constructor(lastCompletedOffset: number, found: boolean, size: number);
     }
 
     export class MetricsList {
@@ -4335,12 +4335,12 @@ declare namespace dashjs {
     }
 
     export class TextRequest extends FragmentRequest {
-        constructor(url: string, type: string);
-
         url: string | null;
         type: 'InitializationSegment' | 'MediaSegment' | null;
         mediaType: MediaType;
         responseType: string;
+
+        constructor(url: string, type: string);
     }
 
     export class TextTrackInfo extends MediaInfo {

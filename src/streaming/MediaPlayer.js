@@ -67,9 +67,7 @@ import SegmentBaseController from '../dash/controllers/SegmentBaseController.js'
 import DashAdapter from '../dash/DashAdapter.js';
 import DashMetrics from '../dash/DashMetrics.js';
 import TimelineConverter from '../dash/utils/TimelineConverter.js';
-import {
-    HTTPRequest
-} from './vo/metrics/HTTPRequest.js';
+import {HTTPRequest} from './vo/metrics/HTTPRequest.js';
 import BASE64 from '../../externals/base64.js';
 import ISOBoxer from 'codem-isoboxer';
 import DashJSError from './vo/DashJSError.js';
@@ -128,7 +126,7 @@ function MediaPlayer() {
     const context = this.context;
     const eventBus = EventBus(context).getInstance();
     let settings = Settings(context).getInstance();
-    const debug = Debug(context).getInstance({ settings: settings });
+    const debug = Debug(context).getInstance({settings: settings});
 
     let instance,
         logger,
@@ -1548,7 +1546,7 @@ function MediaPlayer() {
         } else {
             const representation = activeStream.getRepresentationForTypeById(type, id);
             if (representation) {
-                abrController.setPlaybackQuality(type, streamController.getActiveStreamInfo(), representation, { forceReplace });
+                abrController.setPlaybackQuality(type, streamController.getActiveStreamInfo(), representation, {forceReplace});
             }
         }
     }
@@ -1585,7 +1583,7 @@ function MediaPlayer() {
         } else {
             const representation = activeStream.getRepresentationForTypeByIndex(type, index);
             if (representation) {
-                abrController.setPlaybackQuality(type, streamController.getActiveStreamInfo(), representation, { forceReplace });
+                abrController.setPlaybackQuality(type, streamController.getActiveStreamInfo(), representation, {forceReplace});
             }
         }
     }

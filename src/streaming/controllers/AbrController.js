@@ -392,7 +392,7 @@ function AbrController() {
                 return voRepresentations;
             }
 
-            const { elementWidth } = videoModel.getVideoElementSize();
+            const {elementWidth} = videoModel.getVideoElementSize();
 
             const filteredArray = voRepresentations.filter((voRepresentation) => {
                 return voRepresentation.mediaInfo.type !== Constants.VIDEO || voRepresentation.width <= elementWidth;
@@ -740,7 +740,7 @@ function AbrController() {
                     mediaType: type,
                     isAdaptationSetSwitch
                 },
-                { streamId: streamInfo.id, mediaType: type }
+                {streamId: streamInfo.id, mediaType: type}
             );
             const bitrate = throughputController.getAverageThroughput(type);
             if (!isNaN(bitrate)) {
