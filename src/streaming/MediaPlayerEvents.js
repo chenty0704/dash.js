@@ -487,6 +487,12 @@ class MediaPlayerEvents extends EventsBase {
          * @type {string}
          */
         this.MANAGED_MEDIA_SOURCE_END_STREAMING = 'managedMediaSourceEndStreaming';
+
+        /**
+         * The scheduler is ready for the next download.
+         * @type {string}
+         */
+        this.SCHEDULER_READY = 'schedulerReady';
     }
 }
 

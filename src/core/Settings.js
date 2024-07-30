@@ -1286,6 +1286,10 @@ function Settings() {
                 autoSwitchBitrate: {
                     audio: true,
                     video: true
+                },
+                useExternalController: {
+                    audio: false,
+                    video: false
                 }
             },
             cmcd: {

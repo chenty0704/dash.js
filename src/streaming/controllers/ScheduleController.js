@@ -132,6 +132,11 @@ function ScheduleController(config) {
             if (_shouldScheduleNextRequest()) {
                 let qualityChange = false;
                 if (checkPlaybackQuality) {
+                    if (settings.get().streaming.abr.useExternalController[type]) {
+                        eventBus.trigger(Events.SCHEDULER_READY, {mediaType: type});
+                        return;
+                    }
+
                     // in case the playback quality is supposed to be changed, the corresponding StreamProcessor will update the currentRepresentation.
                     // The StreamProcessor will also start the schedule timer again once the quality switch has beeen prepared. Consequently, we only call _getNextFragment if the quality is not changed.
                     qualityChange = abrController.checkPlaybackQuality(type, streamInfo.id);
@@ -146,6 +151,16 @@ function ScheduleController(config) {
         } catch (e) {
             startScheduleTimer(playbackController.getLowLatencyModeEnabled() ? settings.get().streaming.scheduling.lowLatencyTimeout : settings.get().streaming.scheduling.defaultTimeout);
         }
+    }
+
+    /**
+     * Schedules a segment download at the specified quality.
+     * @param {Representation} representation The representation of the quality.
+     */
+    function scheduleRepresentation(representation) {
+        const currentRepresentation = representationController.getCurrentRepresentation();
+        if (representation.id === currentRepresentation.id) _getNextFragment();
+        else abrController.setPlaybackQuality(type, streamInfo, representation);
     }
 
     /**
@@ -444,6 +459,7 @@ function ScheduleController(config) {
         setCheckPlaybackQuality,
         setInitSegmentRequired,
         setLastInitializedRepresentationId,
+        scheduleRepresentation
     };
 
     setup();

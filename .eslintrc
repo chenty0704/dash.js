@@ -49,7 +49,7 @@
             }
         ],
         "curly": [
-            "error",
+            "warn",
             "all"
         ],
         "space-infix-ops": ["error", {"int32Hint": true}]

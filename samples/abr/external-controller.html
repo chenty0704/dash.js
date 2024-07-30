@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>External ABR Controller</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        video {
+            height: 75vh;
+            aspect-ratio: 16 / 9;
+        }
+    </style>
+    <script src="../../dist/dash.all.debug.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", _ => {
+            const videoPlayer = dashjs.MediaPlayer().create()
+            videoPlayer.initialize()
+            videoPlayer.updateSettings({"streaming": {"abr": {"useExternalController": {"video": true}}}})
+            videoPlayer.setAutoPlay(false)
+            videoPlayer.attachView(document.querySelector("video"))
+            videoPlayer.attachSource("https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd")
+
+            videoPlayer.on(dashjs.MediaPlayer.events["SCHEDULER_READY"], _ => {
+                videoPlayer.scheduleRepresentationFor("video", Math.floor(Math.random() * 10))
+            })
+        })
+    </script>
+</head>
+<body>
+<video controls></video>
+</body>
+</html>

@@ -1741,6 +1741,19 @@ function MediaPlayer() {
         mediaController.setTrack(track, noSettingsSave);
     }
 
+    /**
+     * Schedules a segment download for a stream at the specified quality.
+     * @param {MediaType} mediaType The media type of the stream.
+     * @param {number} index The index of the quality.
+     */
+    function scheduleRepresentationFor(mediaType, index) {
+        const activeStream = getActiveStream();
+        const representation = activeStream.getRepresentationForTypeByIndex(mediaType, index);
+        const scheduler = activeStream.getProcessors()
+            .find(processor => processor.getType() === mediaType).getScheduleController();
+        scheduler.scheduleRepresentation(representation);
+    }
+
     /*
     ---------------------------------------------------------------------------
 
@@ -2779,6 +2792,7 @@ function MediaPlayer() {
         resetSettings,
         restoreDefaultUTCTimingSources,
         retrieveManifest,
+        scheduleRepresentationFor,
         seek,
         seekToOriginalLive,
         seekToPresentationTime,
